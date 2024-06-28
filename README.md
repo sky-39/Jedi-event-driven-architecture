@@ -6,7 +6,7 @@ To run this project, follow these steps:
 2. Configure AWS with the following settings:
 
 ```plaintext
-aws configurations:
+// aws configurations:
 access_id = 'test'
 secret_access_key = 'test'
 region = 'us-east-1'
