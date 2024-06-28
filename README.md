@@ -1,10 +1,10 @@
 To run this project ->
-- configure start localstack and configure aws
-- aws configurations are:
-    - access_id = 'test'
-    - secret_access_key = 'test'
-    - region = 'us-east-1'
-    - endpoint = 'http://localhost:4566'
+configure start localstack and configure aws
+aws configurations are:
+access_id = 'test'
+secret_access_key = 'test'
+region = 'us-east-1'
+endpoint = 'http://localhost:4566'
  
       
 This project contains 2 APIs
