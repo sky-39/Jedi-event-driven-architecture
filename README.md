@@ -1,17 +1,40 @@
-To run this project ->
-configure start localstack and configure aws
-aws configurations are:
+## Project Setup
+
+To run this project, follow these steps:
+
+1. Start LocalStack.
+2. Configure AWS with the following settings:
+
+```plaintext
+aws configurations:
 access_id = 'test'
 secret_access_key = 'test'
 region = 'us-east-1'
 endpoint = 'http://localhost:4566'
- 
-      
-This project contains 2 APIs
+```
 
-1-> '/publish' which takes "eventType" and "message" from body and send message to sqs depending on eventType.
-  "eventType":"broadcast" -> this will send the message to all 3 queues (emailQueue, smsQueue, entityQueue)
-  "eventType":"communication" -> this will send the message to only 2 queues (emailQueue, smsQueue)
-  "eventType":"entity" -> this will send message to only 1 queue (entityQueue)
 
-2-> '/receive/:eventType' which retreives messages from queue depending on value of eventType.
+## APIs
+This project contains 2 APIs:
+
+1. `/publish`
+- Method: POST
+- Description: Takes `eventType` and `message` from the body and sends the message to SQS depending on `eventType`
+- Request Body:
+```plaintext
+{
+ "eventType": "broadcast",
+ "message": "test message"
+}
+```
+
+- Event Types
+   - `"broadcast"`: Sends the message to all 3 queues (emailQueue, smsQueue and entityQueue).
+   - `"communication"`: Sends the message to only 2 queues (emailQueue and smsQueue).
+   - `"entity"`: Sends the message to only entityQueue.
+
+2. `/receive/:eventType`
+- Method: GET
+- Description: Retrieves messages from the queue depending on the values of `eventType`.
+- Path Parameters:
+   - `eventType`: Values can be `broadcast`, `communication` and `entity`.
